@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +34,13 @@
   <nav id="main-nav">
     <div class="row">
       <a href="{% url 'blog-home' %}"><i class="fas fa-home fa-2x"></i></a>
+
     </div>
+    <!-- <nav class="navbar fixed-top navbar-light bg-light">
+    <a class="navbar-brand" href="#">Fixed top</a>
+  </nav> -->
+
+
   </nav>
 
   <div class="main-container">
@@ -42,6 +49,7 @@
         <div class="col-sm">
           <ul>
             {% if user.is_authenticated %}
+            <li><a href="{% url 'post-create' %}"><i class="fas fa-edit fa-2x"></i></a></li>
             <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt fa-2x"></i></a></li>
             <li><a href="{% url 'profile' %}"><i class="fas fa-address-card fa-2x"></i></a></li>
             {% else %}
@@ -52,35 +60,6 @@
           </ul>
         </div>
     </nav>
-
-
-    <!-- <header class="site-header">
-    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-      <div class="container">
-        <a class="navbar-brand mr-4" href="/">Django Blog</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggle">
-          <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-            <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-          </div> -->
-    <!-- Navbar Right Side -->
-    <!-- <div class="navbar-nav">
-            {% if user.is_authenticated %}
-            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-            <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-            {% else %}
-            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header> -->
 
     <main role="main" class="container">
       <div class="row">
@@ -95,7 +74,12 @@
           {% block content %}{% endblock %}
         </div>
         <div class="col-md-4">
-          <div class="content-section">
+          <div class="input-group mt-1 mb-3">
+            <input id="filter" type="text" class="form-control" placeholder="Search" aria-label=""
+              aria-describedby="basic-addon1" name="filter">
+
+          </div>
+          <div class="content-section box-sh">
             <h3 class="text-center">Highlights</h3>
             <p class='text-muted text-center'>What's been happening.
             <ul class="list-group">
@@ -122,6 +106,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+  <script src="{% static 'blog/js/app.js' %}"></script>
 </body>
 
 </html>
