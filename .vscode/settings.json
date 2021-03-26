@@ -1,0 +1,6 @@
+{
+  "python.pythonPath": "/mnt/c/Enviornment/django_env/bin/python",
+  "emmet.includeLanguages": {
+    "javascript": "html"
+  }
+}
